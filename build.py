@@ -1,24 +1,22 @@
 import os
-import PyInstaller.__main__
+import PyInstaller.__main__ as py_installer
 import shutil
 from distutils.dir_util import copy_tree
 
 version = "145 MSIX build 3"
 
-
 print("\nBuilding Dashboard...")
-PyInstaller.__main__.run([
+py_installer.run([
     'manager.py',
-    '-i=assets/icon.ico',
+'-i=assets/icon.ico',
     '-w',
     '-y',
     '-n=GWSL',
     #'--hidden-import=pkg_resources.py2_warn'
 ])
 
-
 print("\nBuilding Service...")
-PyInstaller.__main__.run([
+py_installer.run([
     'main.py',
     '-i=assets/icon.ico',
     '-w',
@@ -28,7 +26,6 @@ PyInstaller.__main__.run([
     '--hidden-import=infi.systray',
     #'--hidden-import=pkg_resources.py2_warn'
 ])
-
 
 print(f"\nCreating dist/GWSL_{version}")
 try:
@@ -50,4 +47,5 @@ copy_tree("dist/GWSL/", f"dist/GWSL_{version}/")
 print("Merging: Service...")
 copy_tree("dist/GWSL_service/", f"dist/GWSL_{version}/")
 
+shutil.make_archive('GWSL_service', 'zip', 'dist')
 
