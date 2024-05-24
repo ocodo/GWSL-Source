@@ -1,15 +1,15 @@
 name: Build GWSL
-
 on:
   push:
     branches: [ "master" ]
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Build a GWSL Release'
-        default: 'World'
+      release:
+        description: |
+          Create a release for this run
         required: true
-
+        default: false
+        type: boolean
 jobs:
   build:
     runs-on: windows-latest
@@ -28,6 +28,10 @@ jobs:
           python build.py
       - name: Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
+        if: ${{ inputs.release }}
         with:
           files: GWSL_service.zip
+          name: ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: false
