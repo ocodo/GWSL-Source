@@ -25,5 +25,5 @@ jobs:
           pip install -r requirements.txt -U
       - name: Building GWSL
         run: |
-          python pyinstaller
+          python build.py
 
