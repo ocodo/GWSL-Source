@@ -2,7 +2,7 @@ name: Build GWSL
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "v*"
 jobs:
   build:
     runs-on: windows-latest
