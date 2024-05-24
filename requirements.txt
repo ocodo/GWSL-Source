@@ -1,4 +1,4 @@
-pygame==2.6.0 #Verion 2. The latest.
+pygame==2.5.2
 pywin32
 winshell
 Pillow
