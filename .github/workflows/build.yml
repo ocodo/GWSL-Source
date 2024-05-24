@@ -21,7 +21,6 @@ jobs:
           python build.py
       - name: Release
         uses: softprops/action-gh-release@v2
-        if: ${{ inputs.release }}
         with:
           files: GWSL_service.zip
           draft: false
