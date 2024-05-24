@@ -1,0 +1,9 @@
+pygame==2.6.0 #Verion 2. The latest.
+pywin32
+winshell
+Pillow
+imtools
+keyboard
+pyinstaller==3.5.0
+pyxdg
+psutil
