@@ -3,7 +3,7 @@ import PyInstaller.__main__ as py_installer
 import shutil
 from distutils.dir_util import copy_tree
 
-version = "145 MSIX build 3"
+version = "Unofficial v146 Build"
 
 print("\nBuilding Dashboard...")
 py_installer.run([
