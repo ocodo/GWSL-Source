@@ -1,15 +1,8 @@
 name: Build GWSL
 on:
   push:
-    branches: [ "master" ]
-  workflow_dispatch:
-    inputs:
-      release:
-        description: |
-          Create a release for this run
-        required: true
-        default: false
-        type: boolean
+    tags:
+      - "v*.*.*"
 jobs:
   build:
     runs-on: windows-latest
@@ -31,7 +24,6 @@ jobs:
         if: ${{ inputs.release }}
         with:
           files: GWSL_service.zip
-          name: ${{ github.ref_name }}
           draft: false
           prerelease: false
           generate_release_notes: false
